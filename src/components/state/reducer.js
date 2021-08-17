@@ -1,22 +1,24 @@
 // import functions
-import { UNDO, REDO, NEW } from './actions';
+import { UNDO, REDO, FRESH } from './actions';
 
 // initialize state
 export const initialState = {
   before: [],
-  current: '#FF0000',
+  current: '#ff0000',
   after: []
 };
 
 export function reducer(state, action) {
   const { before, current, after } = state;
 
+  console.log('this is the action', action, 'this is the type', action.type);
+
   switch(action.type) {
-    case NEW:
+    case FRESH:
       console.log('new');
       return {
         ...state,
-        before: [before, current],
+        before: [...before, current],
         current: action.payload
       };
     case UNDO:
