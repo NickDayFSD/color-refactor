@@ -38,6 +38,7 @@ function App() {
       <button onClick={undo}>undo</button>
       <button onClick={redo}>redo</button>
       <input
+        data-testid="color"
         type="color"
         value={current}
         onChange={({ target }) => record(target.value)}
