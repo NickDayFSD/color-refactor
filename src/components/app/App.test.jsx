@@ -1,11 +1,17 @@
 import React from 'react';
 import { render, cleanup, fireEvent, screen } from '@testing-library/react';
+import { ReduxProvider } from '../state/ReduxProvider';
+import { initialState, reducer } from '../state/reducer';
 import App from './App';
 
 describe('App component', () => {
   afterAll(() => cleanup());
   it('renders App and tests color changes', () => {
-    const page = render(<App />);
+    const page = render(
+      <ReduxProvider reducer={reducer} initialState={initialState}>
+        <App />
+      </ReduxProvider>
+    );
 
     const newColor = '#abe1b9';
     // get color input
